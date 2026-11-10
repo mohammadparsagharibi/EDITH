@@ -128,9 +128,7 @@ class MainActivity : Activity() {
                 10f,
                 Color.rgb(100, 155, 190)
             ),
-            LinearLayout.LayoutParams(
-                -1, dp(30)
-            )
+            LinearLayout.LayoutParams(-1, dp(30))
         )
 
         val orb = OrbView()
@@ -314,10 +312,7 @@ class MainActivity : Activity() {
             }
         )
 
-        val params = LinearLayout.LayoutParams(
-            -1,
-            -2
-        ).apply {
+        val params = LinearLayout.LayoutParams(-1, -2).apply {
             bottomMargin = dp(12)
         }
 
@@ -419,8 +414,7 @@ class MainActivity : Activity() {
         super.onDestroy()
     }
 
-    inner class OrbView(context: android.content.Context? = this@MainActivity) :
-        View(context) {
+    inner class OrbView : View(this@MainActivity) {
 
         private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
         private var rotation = 0f
@@ -455,6 +449,7 @@ class MainActivity : Activity() {
             paint.strokeWidth = dp(2).toFloat()
             canvas.save()
             canvas.rotate(rotation, cx, cy)
+
             canvas.drawArc(
                 cx - radius * 1.8f,
                 cy - radius * 1.8f,
@@ -462,6 +457,7 @@ class MainActivity : Activity() {
                 cy + radius * 1.8f,
                 20f, 95f, false, paint
             )
+
             canvas.drawArc(
                 cx - radius * 1.8f,
                 cy - radius * 1.8f,
@@ -469,6 +465,7 @@ class MainActivity : Activity() {
                 cy + radius * 1.8f,
                 200f, 65f, false, paint
             )
+
             canvas.restore()
 
             paint.style = Paint.Style.FILL
@@ -483,6 +480,7 @@ class MainActivity : Activity() {
                 null,
                 Shader.TileMode.CLAMP
             )
+
             canvas.drawCircle(cx, cy, radius, paint)
             paint.shader = null
 
@@ -498,7 +496,12 @@ class MainActivity : Activity() {
             paint.color = white
             paint.textSize = dp(12).toFloat()
             paint.textAlign = Paint.Align.CENTER
-            canvas.drawText("E D I T H", cx, cy + radius * 1.85f, paint)
+            canvas.drawText(
+                "E D I T H",
+                cx,
+                cy + radius * 1.85f,
+                paint
+            )
         }
 
         override fun onDetachedFromWindow() {
