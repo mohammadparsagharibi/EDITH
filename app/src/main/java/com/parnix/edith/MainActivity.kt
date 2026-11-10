@@ -1,4 +1,3 @@
-
 package com.parnix.edith
 
 import android.app.Activity
@@ -221,7 +220,7 @@ class MainActivity : Activity() {
             setTextColor(white)
             setHintTextColor(Color.GRAY)
             textSize = 14f
-            singleLine = true
+            setSingleLine(true)
             background = GradientDrawable().apply {
                 setColor(panel)
                 cornerRadius = dp(15).toFloat()
